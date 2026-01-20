@@ -1,0 +1,264 @@
+:root {
+    --bg-color: #0d0d0d;
+    --text-color: #00ff41;
+    /* Cyber green */
+    --accent-color: #008f11;
+    --error-color: #ff0000;
+    --font-stack: 'Courier New', Courier, monospace;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-stack);
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 0 0 5px var(--accent-color);
+}
+
+/* CRT Effects */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle, rgba(0, 255, 0, 0) 60%, rgba(0, 0, 0, 0.6) 100%);
+    pointer-events: none;
+    z-index: 99;
+}
+
+.scanline {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0),
+            rgba(255, 255, 255, 0) 50%,
+            rgba(0, 0, 0, 0.2) 50%,
+            rgba(0, 0, 0, 0.2));
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 98;
+    animation: scroll 10s linear infinite;
+}
+
+@keyframes scroll {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 0 100%;
+    }
+}
+
+/* Layout */
+.container {
+    width: 90%;
+    max-width: 800px;
+    height: 80%;
+    border: 2px solid var(--accent-color);
+    padding: 20px;
+    position: relative;
+    background: rgba(0, 20, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    border-bottom: 1px solid var(--accent-color);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.status-bar {
+    font-size: 0.8rem;
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.blink {
+    animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+}
+
+/* Glitch Effect */
+.glitch {
+    font-size: 2rem;
+    position: relative;
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-color);
+}
+
+.glitch::before {
+    left: 2px;
+    text-shadow: -1px 0 red;
+    clip: rect(24px, 550px, 90px, 0);
+    animation: glitch-anim-1 2.5s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+    left: -2px;
+    text-shadow: -1px 0 blue;
+    clip: rect(85px, 550px, 140px, 0);
+    animation: glitch-anim-2 3s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim-1 {
+    0% {
+        clip: rect(20px, 9999px, 10px, 0);
+    }
+
+    100% {
+        clip: rect(80px, 9999px, 100px, 0);
+    }
+}
+
+@keyframes glitch-anim-2 {
+    0% {
+        clip: rect(100px, 9999px, 80px, 0);
+    }
+
+    100% {
+        clip: rect(40px, 9999px, 20px, 0);
+    }
+}
+
+/* Main Content */
+#game-terminal {
+    flex-grow: 1;
+    overflow-y: auto;
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+p {
+    margin-bottom: 10px;
+}
+
+button.terminal-btn {
+    background: transparent;
+    border: 1px solid var(--text-color);
+    color: var(--text-color);
+    padding: 10px 20px;
+    font-family: var(--font-stack);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 20px;
+}
+
+button.terminal-btn:hover {
+    background: var(--text-color);
+    color: var(--bg-color);
+    box-shadow: 0 0 10px var(--text-color);
+}
+
+/* Form Elements */
+.input-group {
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.terminal-input {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid var(--text-color);
+    color: var(--text-color);
+    font-family: var(--font-stack);
+    font-size: 1.2rem;
+    padding: 5px;
+    outline: none;
+    flex-grow: 1;
+}
+
+.terminal-input:focus {
+    box-shadow: 0 5px 10px -5px var(--text-color);
+}
+
+/* Utilities */
+.hidden {
+    display: none !important;
+}
+
+.error-msg {
+    color: var(--error-color);
+    margin-top: 10px;
+    font-weight: bold;
+    animation: flash 0.5s;
+}
+
+@keyframes flash {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+.highlight {
+    background-color: var(--text-color);
+    color: var(--bg-color);
+    padding: 2px 5px;
+    font-weight: bold;
+}
+
+/* Stage Transitions */
+.stage {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+footer {
+    margin-top: auto;
+    font-size: 0.7rem;
+    opacity: 0.7;
+    text-align: center;
+    padding-top: 10px;
+    border-top: 1px solid var(--accent-color);
+}
