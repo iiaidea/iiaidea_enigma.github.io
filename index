@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROJECT: ENIGMA</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="overlay"></div>
+    <div class="scanline"></div>
+    <div class="container">
+        <header>
+            <h1 class="glitch" data-text="PROJECT: ENIGMA">PROJECT: ENIGMA</h1>
+            <div class="status-bar">
+                <span id="clock">00:00:00</span>
+                <span class="blink"> [SECURE CONNECTION ESTABLISHED]</span>
+            </div>
+        </header>
+        <main id="game-terminal">
+
+            <!-- STAGE 0: INTRODUCTION -->
+            <div id="stage-0" class="stage">
+                <p>> SYSTEM INITIALIZING...</p>
+                <p>> CHECKING SECURITY PROTOCOLS... OK</p>
+                <p>> MOUNTING TARGET DRIVE... SUCCESS</p>
+                <br>
+                <p>Welcome, Agent.</p>
+                <p>Your mission: Infiltrate the mainframe and retrieve the payload.</p>
+                <p>Use your skills. Trust no one.</p>
+                <br>
+                <button id="start-btn" class="terminal-btn">[ INITIATE MISSION ]</button>
+            </div>
+
+            <!-- STAGE 1: SOURCE CODE -->
+            <!-- HINT: The password for this stage is "GHOST_IN_THE_SHELL" -->
+            <div id="stage-1" class="stage hidden">
+                <h2>>> STAGE 1: RECONNAISSANCE</h2>
+                <p>> TARGET LOCKED.</p>
+                <p>> INSTRUCTION: Find the password hidden within the source of reality.</p>
+                <p>> CLUE: Sometimes what you see is NOT what you get. Check the ELEMENTS.</p>
+                <br>
+                <div class="input-group">
+                    <span>> PASSWORD:</span>
+                    <input type="text" id="input-1" class="terminal-input" autocomplete="off" placeholder="_">
+                </div>
+                <button id="btn-1" class="terminal-btn">[ AUTHENTICATE ]</button>
+                <p id="error-1" class="error-msg hidden">>> ACCESS DENIED.</p>
+            </div>
+
+            <!-- STAGE 2: DECODING -->
+            <div id="stage-2" class="stage hidden">
+                <h2>>> STAGE 2: DECRYPTION</h2>
+                <p>> ENCRYPTED SIGNAL INTERCEPTED.</p>
+                <p>> CONTENT: <span class="highlight">"TmVvVG9reW8yMDI1"</span></p>
+                <p>> INSTRUCTION: Decode the message using Base64.</p>
+                <br>
+                <div class="input-group">
+                    <span>> DECODED KEY:</span>
+                    <input type="text" id="input-2" class="terminal-input" autocomplete="off" placeholder="_">
+                </div>
+                <button id="btn-2" class="terminal-btn">[ DECRYPT ]</button>
+                <p id="error-2" class="error-msg hidden">>> INCORRECT KEY.</p>
+            </div>
+
+            <!-- STAGE 3: INSPECTOR -->
+            <div id="stage-3" class="stage hidden">
+                <h2>>> STAGE 3: LOG ANALYSIS</h2>
+                <p>> SYSTEM ERROR DETECTED.</p>
+                <p>> INSTRUCTION: Check the developer console for error logs or debug messages.</p>
+                <br>
+                <div class="input-group">
+                    <span>> DEBUG CODE:</span>
+                    <input type="text" id="input-3" class="terminal-input" autocomplete="off" placeholder="_">
+                </div>
+                <button id="btn-3" class="terminal-btn">[ EXECUTE ]</button>
+                <p id="error-3" class="error-msg hidden">>> INVALID CODE.</p>
+            </div>
+
+            <!-- STAGE 4: INJECTION -->
+            <div id="stage-4" class="stage hidden">
+                <h2>>> STAGE 4: ADMIN ACCESS</h2>
+                <p>> LOGIN PORTAL REACHED.</p>
+                <p>> USERNAME: <strong>admin</strong></p>
+                <p>> INSTRUCTION: Bypass authentication. Password is unknown.</p>
+                <p>> HINT: SQL Injection might work here. Try: ' OR '1'='1</p>
+                <br>
+                <div class="input-group">
+                    <span>> PASSWORD:</span>
+                    <input type="text" id="input-4" class="terminal-input" autocomplete="off" placeholder="_">
+                </div>
+                <button id="btn-4" class="terminal-btn">[ LOGIN ]</button>
+                <p id="error-4" class="error-msg hidden">>> AUTHENTICATION FAILED.</p>
+            </div>
+
+            <!-- FINAL STAGE: SUCCESS -->
+            <div id="stage-final" class="stage hidden">
+                <h1 class="glitch" data-text="MISSION ACCOMPLISHED">MISSION ACCOMPLISHED</h1>
+                <p>> ROOT ACCESS GRANTED.</p>
+                <p>> CONGRATULATIONS!</p>
+                <br>
+                <p>Happy Birthday! (Or whatever message you want here)</p>
+                <p>Thank you for everything.</p>
+                <br>
+                <p>> SYSTEM SHUTTING DOWN...</p>
+            </div>
+
+        </main>
+        <footer>
+            <p>UNAUTHORIZED ACCESS IS PROHIBITED. IP LOGGED.</p>
+        </footer>
+    </div>
+    <script src="./main.js"></script>
+</body>
+
+</html>
